@@ -1,16 +1,16 @@
 %define upstream_name    Padre-Plugin-DataWalker
-%define upstream_version 0.02
+%define upstream_version 0.04
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Release:    %mkrel 1
 
 Summary:    Simple Perl data structure browser Padre
 License:    GPL+ or Artistic
 Group:      Development/Perl
 Url:        http://search.cpan.org/dist/%{upstream_name}
 Source0:    http://www.cpan.org/modules/by-module/Padre/%{upstream_name}-%{upstream_version}.tar.gz
-
+BuildRequires: perl(Module::Install)
 BuildRequires: perl(Padre)
 BuildRequires: perl(Wx::Perl::DataWalker)
 BuildRequires: perl(YAML::XS)
@@ -25,15 +25,15 @@ facilities for interactively browsing Perl data structures.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%make
+%{__perl} Build.PL installdirs=vendor
+./Build
 
 %check
-make test
+./Build test
 
 %install
 rm -rf %buildroot
-%makeinstall_std
+./Build install destdir=%{buildroot}
 
 %clean
 rm -rf %buildroot

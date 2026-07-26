@@ -1,15 +1,13 @@
 %define upstream_name    Padre-Plugin-DataWalker
-%define upstream_version 0.04
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	6
+Version:	0.04
+Release:	7
 
 Summary:	Simple Perl data structure browser Padre
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://padre.perlide.org
-Source0:	https://cpan.metacpan.org/authors/id/A/AZ/AZAWAWI/Padre-Plugin-DataWalker-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/A/AZ/AZAWAWI/Padre-Plugin-DataWalker-%{version}.tar.gz
 
 BuildRequires:	perl-devel
 BuildRequires:	perl(Module::Install)
@@ -23,7 +21,7 @@ This plugin uses the the Wx::Perl::DataWalker manpage module to provide
 facilities for interactively browsing Perl data structures.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Build.PL installdirs=vendor
